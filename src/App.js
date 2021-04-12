@@ -9,6 +9,10 @@ const initialProductList = [
 
 function App() {
   const [productList, setproductList] = useState(initialProductList);
+  const cartTotal = productList.reduce(
+    (acc, cur) => acc + cur.price * cur.quantity,
+    0
+  );
   return (
     <div className='App'>
       <h1>Ma commande</h1>
@@ -26,14 +30,17 @@ function App() {
             return (
               <tr key={product.id}>
                 <td>{product.name}</td>
-                <td>{product.price}</td>
+                <td>{product.price} €</td>
                 <td>{product.quantity}</td>
-                <td>{product.price * product.quantity}</td>
+                <td>{product.price * product.quantity} €</td>
               </tr>
             );
           })}
         </tbody>
       </table>
+      <p>
+        Total de la commande : <em>{cartTotal} €</em>
+      </p>
     </div>
   );
 }
