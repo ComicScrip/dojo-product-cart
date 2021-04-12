@@ -1,4 +1,5 @@
-.App h1, .App p {
+.App h1,
+.App p {
   text-align: center;
 }
 
@@ -7,14 +8,15 @@
   border-collapse: collapse;
 }
 
-.App table td {
+.App table td,
+.App table th {
   border: 1px solid grey;
   padding: 10px;
 }
 
 .App form {
   margin-top: 50px;
-  text-align: center
+  text-align: center;
 }
 
 .App form .field {
@@ -27,10 +29,9 @@
 }
 
 .App form h2 {
-  text-align: center
+  text-align: center;
 }
 
 .App form h2 {
-  text-align: center
+  text-align: center;
 }
-
