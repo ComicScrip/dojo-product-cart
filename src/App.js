@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css';
 
 const initialProductList = [
@@ -8,11 +9,36 @@ const initialProductList = [
 ];
 
 function App() {
-  const [productList, setproductList] = useState(initialProductList);
+  const [productList, setProductList] = useState(initialProductList);
+  const [newProductName, setNewProductName] = useState('');
+  const [newProductPrice, setNewProductPrice] = useState(0);
+
   const cartTotal = productList.reduce(
     (acc, cur) => acc + cur.price * cur.quantity,
     0
   );
+
+  const handleNewProductNameChange = (event) => {
+    setNewProductName(event.target.value);
+  };
+
+  const handleNewProductPriceChange = (event) => {
+    setNewProductPrice(event.target.value);
+  };
+
+  const handleAddProduct = (event) => {
+    event.preventDefault();
+    setProductList((prevList) => [
+      ...prevList,
+      {
+        id: uuidv4(),
+        name: newProductName,
+        price: parseFloat(newProductPrice),
+        quantity: 1,
+      },
+    ]);
+  };
+
   return (
     <div className='App'>
       <h1>Ma commande</h1>
@@ -41,6 +67,38 @@ function App() {
       <p>
         Total de la commande : <em>{cartTotal} €</em>
       </p>
+      <form onSubmit={handleAddProduct}>
+        <h2>Ajouter un produit</h2>
+        <label htmlFor='name'>
+          Nom
+          <input
+            id='name'
+            className='field'
+            name='name'
+            type='text'
+            required
+            onChange={handleNewProductNameChange}
+            value={newProductName}
+          />
+        </label>
+        <br />
+        <label htmlFor='price'>
+          Prix (€)
+          <input
+            className='field'
+            id='name'
+            name='name'
+            type='number'
+            required
+            value={newProductPrice}
+            onChange={handleNewProductPriceChange}
+          />
+        </label>
+        <br />
+        <br />
+
+        <button type='submit'>Ajouter</button>
+      </form>
     </div>
   );
 }

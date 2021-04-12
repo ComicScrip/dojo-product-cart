@@ -35,3 +35,8 @@
 .App form h2 {
   text-align: center;
 }
+
+.App button,
+.App input[type='submit'] {
+  cursor: pointer;
+}
