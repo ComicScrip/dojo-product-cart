@@ -26,6 +26,21 @@ function App() {
     setNewProductPrice(event.target.value);
   };
 
+  const handleProductQuantityChange = (id, newQuantity) => {
+    const quantity = parseInt(newQuantity, 10);
+    if (quantity === 0) {
+      if (window.confirm('Etes vous sûr de vouloir supprimer cet item ?')) {
+        setProductList((prevList) => prevList.filter((p) => p.id !== id));
+      }
+    } else {
+      setProductList((prevList) =>
+        prevList.map((product) =>
+          product.id === id ? { ...product, quantity } : product
+        )
+      );
+    }
+  };
+
   const handleAddProduct = (event) => {
     event.preventDefault();
     setProductList((prevList) => [
@@ -57,7 +72,19 @@ function App() {
               <tr key={product.id}>
                 <td>{product.name}</td>
                 <td>{product.price} €</td>
-                <td>{product.quantity}</td>
+                <td>
+                  <input
+                    type='number'
+                    min='0'
+                    value={product.quantity}
+                    onChange={(event) =>
+                      handleProductQuantityChange(
+                        product.id,
+                        event.target.value
+                      )
+                    }
+                  />
+                </td>
                 <td>{product.price * product.quantity} €</td>
               </tr>
             );
@@ -86,8 +113,8 @@ function App() {
           Prix (€)
           <input
             className='field'
-            id='name'
-            name='name'
+            id='price'
+            name='price'
             type='number'
             required
             value={newProductPrice}
