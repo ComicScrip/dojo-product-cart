@@ -24,7 +24,7 @@ Conseil : *Comme d'habitude*, gardez bien votre console ouverte pendant le déve
 
 ## Instructions pour le dojo
 
-### Etape 1 : Afficher les produits (Read | GET | SELECT)
+### Afficher les produits (Read | GET | SELECT)
 
 Dans `App.js` vous avez quelques exemples de produits dans la constante `initialProductList`.
 
