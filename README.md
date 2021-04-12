@@ -34,11 +34,9 @@ Il faut afficher ces 3 produits dans un tableau qui possèdera les colonnes  :
 - 'Quantité' (`quantity`)
 - 'Prix total' (`price * quantity`)
 
-Attention : Comme nous allons modifier cette liste de produits par la suite et que nous voulons que React répercute les changements sur l'affichage, **les données sur les produits doivent être affichées à partir du `state` du composant `App`.** (et pas directment depuis `initialProductList` !).
+Attention : Comme nous allons modifier cette liste de produits par la suite et que nous voulons que React répercute les changements sur l'affichage, **les données sur les produits doivent être affichées à partir du `state` du composant `App`** (et pas directment depuis `initialProductList` !).
 
-En dessous du tableau, affichez le montant total du panier, qui se calcule en faisant la somme des prix totaux (prix * quantité) des items du panier.
-
-Conseil : Vous pouvez utiliser [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
+En dessous du tableau, affichez le montant total du panier, qui se calcule en faisant la somme des prix totaux (prix * quantité) des items du panier. Vous pouvez utiliser [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
 ### Ajout d'un produit dans la liste (Create | POST | INSERT INTO)
 
 Creez un formulaire pour ajouter un produit : 
