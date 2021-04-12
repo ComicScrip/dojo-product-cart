@@ -24,11 +24,9 @@ Conseil : *Comme d'habitude*, gardez bien votre console ouverte pendant le déve
 
 ## Instructions pour le dojo
 
-### Etape 1 : Afficher les produits dans un tableau
+### Etape 1 : Afficher les produits (Read | GET | SELECT)
 
 Dans `App.js` vous avez quelques exemples de produits dans la constante `initialProductList`.
-
-#### Afficher le tableau
 
 Il faut afficher ces 3 produits dans un tableau qui possèdera les colonnes  : 
 - 'Produit' (`name`)
