@@ -16,6 +16,8 @@ Le but général est de créer une petite application React permettant de gérer
 
 ![Screenshot de l'application finale](https://i.imgur.com/TRUaDKk.png)
 
+Par soucis de simplicité, tout se fera dans le composant `App`.
+
 Jettez un oeil à `App.css` afin d'utiliser **uniquement** les classes existantes pour styliser l'application *a minima*. 
 
 Conseil : *Comme d'habitude*, gardez bien votre console ouverte pendant le développement, pour ne pas laisser passer de warning ou d'erreur quelconque :)
@@ -31,6 +33,8 @@ Il faut afficher ces 3 produits dans un tableau qui possèdera les colonnes  :
 - 'Prix unitaire' (`price`)
 - 'Quantité' (`quantity`)
 - 'Prix total' (`price * quantity`)
+
+Attention : Comme nous allons modifier cette liste de produits par la suite et que nous voulons la synchroniser avec l'affichage, *il faut les données sur les produits soient affichées à partir du `state` du composant* (et pas directment depuis `initialProductList` !).
 
 ### Etape 2 : Afficher le total de la commande
 
@@ -50,7 +54,6 @@ Creez un formulaire pour ajouter un produit :
 
 Dans le tableau, la colonne 'Quantité' ne devrait contenir que des `<input>` (pensez au bon type d'input, avec des contraintes cohérentes comme on parle d'une quantité) : 
 - Ces inputs doivent êtres **controllés par React**. 
-- Les données des produits devront être gérées dans le `state`.
 - Le prix total de l'item devrait se mettre à jour automatiquement à l'édition d'une quantité pour un item de la commande.
 ### Etape 5 : Suppression d'un produit de la liste
 
