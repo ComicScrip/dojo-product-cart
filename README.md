@@ -16,7 +16,7 @@ Le but général est de créer une petite application React permettant de gérer
 
 ![Screenshot de l'application finale](https://i.imgur.com/TRUaDKk.png)
 
-Par soucis de simplicité, tout se fera dans le composant `App`.
+Par souci de simplicité, tout se fera dans le composant `App`.
 
 Jettez un oeil à `App.css` afin d'utiliser **uniquement** les classes existantes pour styliser l'application *a minima*. 
 
