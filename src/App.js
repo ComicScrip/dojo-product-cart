@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css';
 
 const initialProductList = [
@@ -7,9 +8,32 @@ const initialProductList = [
 ];
 
 function App() {
+  const [productList, setproductList] = useState(initialProductList);
   return (
     <div className='App'>
       <h1>Ma commande</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Produit</th>
+            <th>Prix unitaire</th>
+            <th>Quantité</th>
+            <th>Prix total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {productList.map((product) => {
+            return (
+              <tr key={product.id}>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.quantity}</td>
+                <td>{product.price * product.quantity}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 }

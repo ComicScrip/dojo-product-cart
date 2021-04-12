@@ -28,6 +28,8 @@ Conseil : *Comme d'habitude*, gardez bien votre console ouverte pendant le déve
 
 Dans `App.js` vous avez quelques exemples de produits dans la constante `initialProductList`.
 
+#### Afficher le tableau
+
 Il faut afficher ces 3 produits dans un tableau qui possèdera les colonnes  : 
 - 'Produit' (`name`)
 - 'Prix unitaire' (`price`)
@@ -35,14 +37,12 @@ Il faut afficher ces 3 produits dans un tableau qui possèdera les colonnes  :
 - 'Prix total' (`price * quantity`)
 
 Attention : Comme nous allons modifier cette liste de produits par la suite et que nous voulons la synchroniser avec l'affichage, *il faut les données sur les produits soient affichées à partir du `state` du composant* (et pas directment depuis `initialProductList` !).
-
-### Etape 2 : Afficher le montant total de la commande
+#### Afficher le montant total de la commande (Read | GET | SELECT)
 
 En dessous du tableau, affichez le montant total du panier, qui se calcule en faisant la somme des prix totaux (prix * quantité) des items du panier.
 
 Conseil : Vous pouvez utiliser [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
-
-### Etape 3 : Ajout d'un produit dans la liste
+### Ajout d'un produit dans la liste (Create | POST | INSERT INTO)
 
 Creez un formulaire pour ajouter un produit : 
 - Ce dernier contiendra deux champs : 'Nom' et 'Prix', ainsi qu'un bouton 'Ajouter'.
@@ -51,12 +51,12 @@ Creez un formulaire pour ajouter un produit :
 - Un nouveau produit devra posséder un identifiant (`id`) généré aléatoirement au moment de la création. Vous pouvez utiliser [ceci](https://www.npmjs.com/package/uuid).
 - L'affichage du total de la commande doit être mis à jour "automatiquement" après l'ajout d'un produit.
 
-### Etape 4 : Permettre de changer la quantité d'un produit dans la liste 
+### Etape 3 : Permettre de changer la quantité d'un produit dans la liste (Update | PATCH or PUT | UPDATE)
 
 Dans le tableau, la colonne 'Quantité' ne devrait contenir que des `<input>` (pensez au bon type d'input, avec des contraintes cohérentes comme on parle d'une quantité) : 
 - Ces inputs doivent êtres **controllés par React**. 
 - Le prix total de l'item devrait se mettre à jour automatiquement à l'édition d'une quantité pour un item de la commande, le prix total de la commande doit également être mis à jour.
-### Etape 5 : Suppression d'un produit de la liste
+### Etape 4 : Suppression d'un produit de la liste (Delete | DELETE | DELETE)
 
 Dès que l'on renseigne une quantité de 0, une pop-up `window.confirm` apparait pour demander à l'utilisateur "Etes-vous sûr de bien vouloir retirer ce produit de la liste ?" : 
 - S'il confirme, on le fait (sans blague !).
