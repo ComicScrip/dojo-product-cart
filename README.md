@@ -42,15 +42,13 @@ En dessous du tableau, affichez le montant total du panier, qui se calcule en fa
 Creez un formulaire pour ajouter un produit : 
 - Ce dernier contiendra deux champs : 'Nom' et 'Prix', ainsi qu'un bouton 'Ajouter'.
 - Dès que l'on souhaite ajouter un produit, il faut s'assurer que le nom est bien présent et que la quantité a une valeur cohérente  (pensez aux contraintes d'input HTML5 !).
-- Par défaut, un nouveau produit dans la liste aura une quantité de 1.
+- Un nouveau produit dans la liste aura une quantité de 1.
 - Un nouveau produit devra posséder un identifiant (`id`) généré aléatoirement au moment de la création. Vous pouvez utiliser [ceci](https://www.npmjs.com/package/uuid).
-- L'affichage du total de la commande doit être mis à jour "automatiquement" après l'ajout d'un produit.
 
 ### Permettre de changer la quantité d'un produit dans la liste (Update | PATCH or PUT | UPDATE)
 
-Dans le tableau, la colonne 'Quantité' ne devrait contenir que des `<input>` (pensez au bon type d'input, avec des contraintes cohérentes comme on parle d'une quantité) : 
-- Ces inputs doivent êtres **controllés par React**. 
-- Le prix total de l'item et de la commande devraient se mettre à jour automatiquement à l'édition d'une quantité pour un item de la commande.
+Dans le tableau, la colonne 'Quantité' ne devrait contenir que des `<input>` (pensez au bon type d'input, avec des contraintes cohérentes, comme on parle d'une quantité).
+
 ### Suppression d'un produit de la liste (Delete | DELETE | DELETE)
 
 Dès que l'on renseigne une quantité de 0, une pop-up `window.confirm` apparait pour demander à l'utilisateur "Etes-vous sûr de bien vouloir retirer ce produit de la liste ?" : 
