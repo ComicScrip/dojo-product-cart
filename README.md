@@ -1,57 +1,67 @@
 # Dojo React - Product cart
 
-Ce dojo est l'occasion parfaite de pratiquer l'affichage de listes, la gestion du state, des formulaires et des évènements !
+This dojo is meant as a practice about:
 
-Pour commencer, clonez ce dépot et placez-vous à l'interieur du dossier coresspondant.
+- list display
+- state management
+- forms
+- events
 
-## Lancer l'application
+First step: clone this repository (and get into it on your local machine afterwards)
+
+## Launch the app
 
 ```sh
 $ npm install && npm start
 ```
 
-## Objectif
+## Objectives
 
-Le but général est de créer une petite application React permettant de gérer un panier de produits.
+The global aim is to create a small React app to manage a shopping cart.
 
-![Screenshot de l'application finale](https://i.imgur.com/TRUaDKk.png)
+![Final app screenshot](https://i.imgur.com/TRUaDKk.png)
 
-Par souci de simplicité, tout se fera dans le composant `App`.
+To make things easier, everything can be done in your `App` component.
 
-Jettez un oeil à `App.css` afin d'utiliser **uniquement** les classes existantes pour styliser l'application *a minima*. 
+Please pay attention to `App.css`, in order to use **only** existing CSS classes and limit the amount of styling you'll have to do.
 
-Conseil : *Comme d'habitude*, gardez bien votre console ouverte pendant le développement, pour ne pas laisser passer de warning ou d'erreur quelconque :)
+Tip: _as usual_, keep your terminal open during development, it'd be too bad to miss a warning/error message ;-)
 
-## Instructions pour le dojo
+## Instructions
 
-### Afficher les produits (Read | GET | SELECT)
+### Display products (Read | GET | SELECT)
 
-Dans `App.js` vous avez quelques exemples de produits dans la constante `initialProductList`.
+In `App.js` you have data about a few products in the `initialProductList` constant.
+Display these three products in an array with the following columns:
 
-Il faut afficher ces 3 produits dans un tableau qui possèdera les colonnes  : 
-- 'Produit' (`name`)
-- 'Prix unitaire' (`price`)
-- 'Quantité' (`quantity`)
-- 'Prix total' (`price * quantity`)
+- 'Product' (`name`)
+- 'Unit Price' (`price`)
+- 'Quantity' (`quantity`)
+- 'Total Price' (`price * quantity`)
 
-Attention : Comme nous allons modifier cette liste de produits par la suite et que nous voulons que React répercute les changements sur l'affichage, **les données sur les produits doivent être affichées à partir du `state` du composant `App`** (et pas directment depuis `initialProductList`, qui doit servir de valeur initiale à l'état du composant).
+Warning: Since we'll update this list in the next steps and we want React to propagate these changes on your app, **data about products should be drawn from your `App`'s `state`** (as opposed to directly from `initialProductList`, which should remain untouched and represent the **initial** list of products).
 
-En dessous du tableau, affichez le montant total du panier, qui se calcule en faisant la somme des prix totaux (prix * quantité) des items du panier. Vous pouvez utiliser [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
-### Ajout d'un produit dans la liste (Create | POST | INSERT INTO)
+Under the table, display the total cart price. You can get it by adding every "Total Price" from the cart array.
+Tip: You could use [reduce](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce).
 
-Creez un formulaire pour ajouter un produit : 
-- Ce dernier contiendra deux champs : 'Nom' et 'Prix', ainsi qu'un bouton 'Ajouter'.
-- Dès que l'on souhaite ajouter un produit, il faut s'assurer que le nom est bien présent et que la quantité a une valeur cohérente  (pensez aux contraintes d'input HTML5 !).
-- Un nouveau produit dans la liste aura une quantité de 1.
-- Un nouveau produit devra posséder un identifiant (`id`) généré aléatoirement au moment de la création. Vous pouvez utiliser [ceci](https://www.npmjs.com/package/uuid).
+### Add a product in your cart (Create | POST | INSERT INTO)
 
-### Permettre de changer la quantité d'un produit dans la liste (Update | PATCH or PUT | UPDATE)
+Create a form to add a product to your order:
 
-Dans le tableau, la colonne 'Quantité' ne devrait contenir que des `<input>` (pensez au bon type d'input, avec des contraintes cohérentes, comme on parle d'une quantité).
+- It should contain two fields "Name" and "Price", plus a "Add" submit button.
+- When you submit the form, the system should check:
+  - that the name exist
+  - that the price is coherent (HTML5 brought input types, check it out !)
+- A newly added product has a quantity of 1
+- Any newly added product should have a unique "id", randomly generated when the form is submitted. Tip: [This](https://www.npmjs.com/package/uuid) package is awesome in this case !
 
-### Suppression d'un produit de la liste (Delete | DELETE | DELETE)
+### Allow my user to change the needed quantity for any item (Update | PUT or PATCH | UPDATE)
 
-Dès que l'on renseigne une quantité de 0, une pop-up `window.confirm` apparait pour demander à l'utilisateur "Etes-vous sûr de bien vouloir retirer ce produit de la liste ?" : 
-- S'il confirme, on le fait (sans blague !).
-- Sinon sa saisie de quantité (0) est annulée (rien ne se passe, la quantité n'est pas mise à jour).
+In your array, the "Quantity" column should contain several `<input>` and nothing else (Think about your input type and about value consistency: we're speaking about a **quantity**)
 
+### Delete a product from my list (Delete | DELETE | DELETE)
+
+As soon as a "quantity" field reaches 0, a `window.confirm` pop-up should display to ask for a confirmation (Ex: "Are you sure you want to remove this product from your cart ?"):
+
+- On user confirmation, we remove said product (How nice of us! :p)
+- Otherwise, the quantity should not be updated (NB: It does **not** mean "Set quantity to 1 unit" !)
