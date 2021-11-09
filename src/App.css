@@ -40,3 +40,8 @@
 .App input[type='submit'] {
   cursor: pointer;
 }
+
+.total {
+  margin-top: 15px;
+  text-align: center;
+}
