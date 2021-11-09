@@ -1,27 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
-import uniqid from 'uniqid';
-
-const initialProductList = [
-  { id: 1, name: 'produit 1', price: 50, quantity: 1 },
-  { id: 2, name: 'produit 2', price: 75, quantity: 2 },
-  { id: 3, name: 'produit 3', price: 20, quantity: 5 },
-];
+import axios from 'axios';
 
 function App() {
-  const [productList, updateProductList] = useState(initialProductList);
+  const [productList, updateProductList] = useState([]);
   const [newProductName, setNewProductName] = useState('');
   const [newProductPrice, setNewProductPrice] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const newProduct = {
-      id: uniqid(),
-      name: newProductName,
-      price: newProductPrice,
-      quantity: 1,
-    };
-    updateProductList([...productList, newProduct]);
+    axios
+      .post('http://localhost:5000/products', {
+        name: newProductName,
+        price: newProductPrice,
+      })
+      .then((resp) => {
+        updateProductList([...productList, resp.data]);
+      });
   };
 
   const handleNameChange = (e) => {
@@ -30,6 +25,12 @@ function App() {
   const handlePriceChange = (e) => {
     setNewProductPrice(parseInt(e.target.value, 10));
   };
+
+  useEffect(() => {
+    axios.get('http://localhost:5000/products').then((response) => {
+      updateProductList(response.data);
+    });
+  }, []);
 
   return (
     <div className='App'>
